@@ -28,6 +28,6 @@ script:
 - if [ "$TRAVIS_OS_NAME" = "linux" -a "$CC" = "clang" ]; then ./configure -spec linux-clang; fi
 - if [ "$TRAVIS_OS_NAME" = "osx" -a "$CC" = "gcc" ]; then ./configure -spec macx-g++; fi
 - if [ "$TRAVIS_OS_NAME" = "osx" -a "$CC" = "clang" ]; then ./configure -spec macx-clang; fi
-- make
+- make -j$(nproc)
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then xvfb-run -a -s "-screen 0 800x600x24" make check; fi
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then make check; fi
